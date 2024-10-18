@@ -1,7 +1,7 @@
 import { balanceAtom } from "@/store/balanceAtom";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 
@@ -13,7 +13,7 @@ const Balance = () => {
         const getBalance = async () => {
             if (wallet.publicKey) {
                 const balance = await connection.getBalance(wallet.publicKey);
-                setBalance((prev)=>balance / LAMPORTS_PER_SOL)
+                setBalance(()=>balance / LAMPORTS_PER_SOL)
             }
             else return 0;
         };

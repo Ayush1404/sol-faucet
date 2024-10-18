@@ -27,7 +27,7 @@ const Airdrop = () => {
             })
             
             const balance = await connection.getBalance(wallet.publicKey);
-            setBalance((prev)=>balance / LAMPORTS_PER_SOL)
+            setBalance(()=>balance / LAMPORTS_PER_SOL)
             setAmount(0)
 
         }catch(err){

@@ -11,25 +11,31 @@ const Floaters = () => {
         <img 
             height={64}
             width={64}
-            className="absolute right-40 top-20 floating-object"
+            className="absolute right-60 top-[8rem] floating-object"
             src="/solana1.png"
         />
         <img 
             height={64}
             width={64}
-            className="absolute left-60 bottom-40 floating-object"
+            className="absolute left-40 bottom-40 floating-object"
             src="/solana1.png"
         />
         <img 
             height={64}
             width={64}
-            className="absolute left-40 top-60 floating-object"
+            className="absolute left-80 top-80 floating-object"
             src="/solana1.png"
         />
         <img 
             height={64}
             width={64}
-            className="absolute bottom-20 right-20 floating-object"
+            className="absolute bottom-20 right-80 floating-object"
+            src="/solana1.png"
+        />
+        <img 
+            height={64}
+            width={64}
+            className="absolute top-10 left-20 floating-object"
             src="/solana1.png"
         />
     </div>

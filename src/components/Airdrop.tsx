@@ -3,12 +3,16 @@ import { useState } from "react"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { useToast } from "@/hooks/use-toast"
+import { LAMPORTS_PER_SOL } from "@solana/web3.js"
+import { useSetRecoilState } from "recoil"
+import { balanceAtom } from "@/store/balanceAtom"
 
 const Airdrop = () => {
     const wallet = useWallet()
     const {connection} = useConnection()
     const [amount,setAmount] = useState(0) 
     const [loading,setLoading] = useState(false)
+    const setBalance = useSetRecoilState(balanceAtom)
 
     async function sendAirDrop(){ 
         if(!wallet || !wallet.publicKey) return;
@@ -21,6 +25,11 @@ const Airdrop = () => {
                 title: "Transaction successful",
                 description: `${amount} SOL recived succesfully`,
             })
+            
+            const balance = await connection.getBalance(wallet.publicKey);
+            setBalance((prev)=>balance / LAMPORTS_PER_SOL)
+            setAmount(0)
+
         }catch(err){
             console.log(err)
             toast({
@@ -32,7 +41,7 @@ const Airdrop = () => {
             setLoading(false)
         }
     }
-
+    
     const { toast } = useToast()
 
     return (
